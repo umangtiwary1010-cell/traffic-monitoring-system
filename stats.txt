@@ -1,0 +1,7 @@
+ Traffic Analytics Report
+
+Number of car crossed = 4
+Number of bike crossed = 9
+average speed of vehicles  = 37.77
+Number of vehicles overspeeding = 4
+Maximum speed attained  = 83
