@@ -66,8 +66,6 @@ while True:
      else :
        previous_cy = cy -1
 
-
-
      if track_id not in counted_id:
       if previous_cy <=line_y and cy>=line_y:
          count +=1
@@ -77,7 +75,6 @@ while True:
          if class_name == "motorcycle":
           bike_count +=1
          print("counted")
-
 
      if previous_cy <=count_line_1 and cy>=count_line_1:
        prev_time[track_id] =time.time()
@@ -107,8 +104,6 @@ while True:
     if cv.waitKey(1)==27:
        break
 
-
-
 avg = round(sum(speed.values())/len(speed),2) if speed else 0
 max_speed = max(speed.values()) if speed else 0
 
@@ -123,7 +118,6 @@ Maximum speed attained  = {max_speed}
 '''
 with open("stats.txt","w") as f:
       f.write(stats)
-
 
 cap.release()
 out.release()
