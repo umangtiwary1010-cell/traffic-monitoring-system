@@ -48,8 +48,7 @@ A virtual counting line is placed on the road. When a vehicle crosses this line,
 
 Two virtual reference lines are placed at a known real-world distance apart.
 
-When a vehicle crosses:
-
+When a vehicle crosses:\
 1. Reference Line 1 → Start Time Recorded
 2. Reference Line 2 → End Time Recorded
 
@@ -134,6 +133,3 @@ https://github.com/user-attachments/assets/3feddb74-9348-45ff-83ba-f87db27c56ce
 ## Author
 
 Ashutosh Kumar
-
-
-
