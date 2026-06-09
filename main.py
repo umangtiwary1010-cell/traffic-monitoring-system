@@ -14,7 +14,6 @@ out = cv.VideoWriter(
     fps,
     (640, 480)
 )
-
 speed = {}
 line_y = 300
 speed_calculated =set()
@@ -36,7 +35,6 @@ while True:
     ret, frame = cap.read()
     if not ret:
      break
-
 
     frame=cv.resize(frame,(640,480))
     result =model.track(frame,persist=True)
