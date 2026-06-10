@@ -26,6 +26,22 @@ The system detects and tracks vehicles, counts them using virtual line crossing,
 
 ---
 
+## Usage
+
+```bash
+python main.py [--video PATH] [--output PATH] [--speed-limit KMH]
+```
+
+| Argument        | Default              | Description                                  |
+| --------------- | -------------------- | -------------------------------------------- |
+| `--video`       | `videos/mp_.mp4`     | Path to the input video                      |
+| `--output`      | `traffic_output.mp4` | Path to the annotated output video           |
+| `--speed-limit` | `50`                 | Speed limit (km/h) used for overspeed alerts |
+
+If the input video cannot be opened, the program exits with a clear error instead of producing an empty output.
+
+---
+
 ## How It Works
 
 ### Vehicle Detection
