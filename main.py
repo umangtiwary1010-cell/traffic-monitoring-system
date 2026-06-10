@@ -1,15 +1,26 @@
+import argparse
+import sys
 import cv2 as cv
 from ultralytics import YOLO
-import time 
+import time
+
+parser = argparse.ArgumentParser(description="Intelligent Traffic Monitoring System")
+parser.add_argument("--video", default="videos/mp_.mp4", help="Path to the input video")
+parser.add_argument("--output", default="traffic_output.mp4", help="Path to the output video")
+parser.add_argument("--speed-limit", type=int, default=50, help="Speed limit (km/h) for overspeed detection")
+args = parser.parse_args()
 
 model =YOLO("yolov8n.pt")
 
-cap = cv.VideoCapture("videos/mp_.mp4")
+cap = cv.VideoCapture(args.video)
+if not cap.isOpened():
+    print(f"Error: could not open video '{args.video}'")
+    sys.exit(1)
 
 fps =int(cap.get(cv.CAP_PROP_FPS))
 print(fps)
 out = cv.VideoWriter(
-    "traffic_output.mp4",
+    args.output,
     cv.VideoWriter_fourcc(*'mp4v'),
     fps,
     (640, 480)
@@ -29,7 +40,7 @@ prev_time={}
 previous_y = {}
 car_count=0
 bike_count =0 
-speed_limit=50
+speed_limit=args.speed_limit
 
 while True:
     ret, frame = cap.read()
@@ -91,7 +102,7 @@ while True:
      if track_id in speed:
       cv.putText(frame,f"{speed[track_id]} km/h",(cx,cy-10),cv.FONT_HERSHEY_COMPLEX,1.0,(0,0,255),thickness=2)
      
-      if speed[track_id]>50:
+      if speed[track_id]>speed_limit:
        cv.putText(frame,"overspeeding",(cx,cy),cv.FONT_HERSHEY_COMPLEX,1.0,(0,255,255),thickness=1)
        overspeeding.add(track_id)
      
